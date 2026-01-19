@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         prod: resolve(__dirname, 'prod.html'),
+        'test-harness': resolve(__dirname, 'public/test-harness.html'),
       },
     },
   },
