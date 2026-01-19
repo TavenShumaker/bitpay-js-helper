@@ -180,16 +180,22 @@
             return;
           }
 
+          // Unwrap modal2 messages (same as bitpay.js does)
+          var message = event.data;
+          if (event.data && event.data.from === 'modal2') {
+            message = event.data.message;
+          }
+
           // Handle different message types
-          if (typeof event.data === 'string') {
+          if (typeof message === 'string') {
             // String messages like 'loaded', 'close'
-            addEvent(event.data, { origin: event.origin });
-          } else if (typeof event.data === 'object' && event.data !== null) {
+            addEvent(message, { origin: event.origin });
+          } else if (typeof message === 'object' && message !== null) {
             // Object messages like { status: '...' }
-            if (event.data.status) {
-              addEvent('status', { status: event.data.status, origin: event.origin });
+            if (message.status) {
+              addEvent('status', { status: message.status, origin: event.origin });
             } else {
-              addEvent('message', { data: event.data, origin: event.origin });
+              addEvent('message', { data: message, origin: event.origin });
             }
           }
         });
