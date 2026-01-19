@@ -25,7 +25,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const response = await fetch('https://bitpay.com/invoices', {
+    // Use test.bitpay.com to avoid Cloudflare challenges
+    const response = await fetch('https://test.bitpay.com/invoices', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

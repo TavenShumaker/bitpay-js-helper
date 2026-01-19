@@ -160,6 +160,9 @@
           return;
         }
 
+        // Enable test mode to use test.bitpay.com
+        window.bitpay.enableTestMode(true);
+
         // Register callbacks
         window.bitpay.onModalWillEnter(function() {
           addEvent('onModalWillEnter');
